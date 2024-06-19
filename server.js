@@ -3,7 +3,7 @@ const express=require('express');
 const app=express();
 
 const db=require('./db');
-
+require('dotenv').config();
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());
 
@@ -24,7 +24,10 @@ const MenuRoutes=require('./routes/menuRoutes');
 //use the routers
 app.use('/person',personRoutes);
 app.use('/menu',MenuRoutes);
-app.listen(3000,()=>
+
+const PORT=process.env.PORT || 3000;
+
+app.listen(PORT,()=>
 {
     console.log('server started successfully')
 })
